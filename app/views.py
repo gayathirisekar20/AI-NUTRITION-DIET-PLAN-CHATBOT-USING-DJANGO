@@ -160,8 +160,8 @@ def LemNormalize(text):
     clean_text = text.translate(remove_punct_dict)
     words = nltk.word_tokenize(clean_text)
     return LemTokens(words)
-def parents():
-    df = pd.read_csv("parents.csv",encoding='latin-1')
+def chat():
+    df = pd.read_csv("chat.csv",encoding='latin-1')
     df2 = df
     
 
@@ -237,7 +237,7 @@ def data(userText):
                 else:
                     # print("BOT: ",end="")
                     # if who =="par":
-                    ques,ans_sent_tokens,sent_tokens=parents()
+                    ques,ans_sent_tokens,sent_tokens=chat()
                     # else:
                     #     ques,ans_sent_tokens,sent_tokens=stud()
                     res=response(user_response,ques,ans_sent_tokens)

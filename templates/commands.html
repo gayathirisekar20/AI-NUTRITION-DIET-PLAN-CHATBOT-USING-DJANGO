@@ -1,0 +1,6 @@
+<form action="addcommant" method="post">
+    {% csrf_token %}
+    <input type="text" name="user" placeholder="type_your_chat" >
+    <input type="text" name="bot" placeholder="type_bot_response">
+    <input type="submit" value="SAVE">
+</form>

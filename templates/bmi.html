@@ -1,0 +1,68 @@
+{% load static %}
+<style>
+    body{
+        background-image: url('static/img/pexels-elle-hughes-1660030.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 610px;
+        background-position:center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    #full {
+        background: rgb(0 0 0 / 100%);
+        width: 70%;
+        height: 55%;
+        background-position: center;
+    }
+</style>
+{%include 'nav.html'%}
+    <h2 style="text-align: center; margin: 10px; color: white;font-family: 'Times New Roman', Times, serif; background:gray; margin-left:400px;margin-right:400px;">
+    <b>find your BMI</b>
+    </h2><br><br>
+    <div id="full" class="me-auto mx-auto">
+        <br>
+        <form class=" mx-auto " style="width:70%; height:70%;  " action="/bmi_cal" method="post">
+            {% csrf_token %}
+            <div class="row  mx-auto "style="margin-top: 35px;">
+                <label  class=" col-form-label font-italic text-white">Enter Your Height In Centimeter</label>
+                <div class="col">
+                    <input type="number" class="form-control" id="input" placeholder="in Centimeter..." name="height">
+                </div>
+            </div>
+            <br>
+            <div class="row  mx-auto "style="margin-top: 30px;">
+                <label  class="col-form-label font-italic text-white">Enter Your Weight In Kg</label>
+                <div class="col">
+                    <input type="number" class="form-control" id="input" placeholder="in kg...." name="weight">
+                </div>
+            </div>
+            <br>
+            <div class="row  mx-auto"style="margin: 30px;">
+                <div class="col-sm-0 offset-sm-5">
+                    <button type="submit" class="btn btn-dark text-white">find bmi</button>
+                </div>
+            </div>
+            <br>
+        </form>
+           
+    </div> 
+    <br> <br>   
+{% if bmi < 18.5 %}
+<center>
+<h2 style="text-align: center; width:60%;" class=" bg-Tuscany text-wrap mx-auto">your BMI value is {{bmi}}<h2>
+<h1 style="text-align: center; " class=" text-black font-weight-bold"> underweight </h1>
+<br> <br> <br> <br> <br> <br> <br> <br> 
+{% include 'under.html'%}
+{% elif bmi > 18.5 and bmi < 25.0 %}
+<h2 style="text-align: center; width:60%;" class=" bg-primary text-wrap mx-auto">your BMI value is {{bmi}}<h2>
+<h1 style="text-align: center; ;"class="  text-black font-weight-bold">normal </h1>
+<br> <br> <br> <br> <br> <br> <br> <br> 
+{% elif bmi > 25.0 %}
+<h2 style="text-align: center; width:60%;" class=" bg-Tuscany text-wrap mx-auto">your BMI value is {{bmi}}<h2>
+<h1 style="text-align: center; "class=" text-black font-weight-bold">  overweight </h1>
+<br> <br> <br> <br> <br> <br> <br> <br> 
+{% include 'over.html'%}
+{% endif %}
+</center>
+</html>

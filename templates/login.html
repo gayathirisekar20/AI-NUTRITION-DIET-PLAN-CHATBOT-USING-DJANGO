@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <meta charset="utf-8">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/now-ui-kit.css' %}" rel="stylesheet" />
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'><!--web font-->
+    <title>chatbot</title>
+
+</head>
+<style>
+	body {
+		font-family: 'Muli', sans-serif;
+		background: url(https://wallpapertag.com/wallpaper/full/d/c/4/522584-new-invader-zim-desktop-backgrounds-1920x1080-for-macbook.jpg#.ZCLdRlOTgYc.link)no-repeat center 0px;
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		background-size: cover;
+		background-attachment: fixed;
+	}
+	
+	.header-main {
+		width: 35%;
+		margin: 6em 50% 0;
+	}
+</style>
+
+<body>
+	<!-- main -->
+	<div class="agileits-main">
+	<div class="w3top-nav">
+
+
+
+				<div class="w3top-nav-right">
+					<ul>
+						<li><a href="{% url 'register' %}">Signup</a></li>
+					</ul>
+				</div>
+
+		</div>
+
+    <div class="header-main">
+      {%if user.is_authenticated %}
+        <h2>You are already logged in !!</h2>
+        <button class="btn btn-neutral"><a href="{% url 'logout'%}">Logout</a></button>
+      {%else%}
+    <h2>Login Now</h2>
+			<div class="header-bottom">
+				<div class="header-right w3agile">
+					<div class="header-left-bottom agileinfo">
+            <form role="form" action=" /user_login/" method="post">
+            {% csrf_token %}
+							<div class="icon1">
+								<input type="text" name="username" placeholder="Username" >
+							</div>
+							<div class="icon1">
+								<input type="password"  name="password" placeholder="Password"/>
+							</div>
+							<div class="bottom">
+								<input type="submit" value="Log in">
+							</div>
+					</form>
+					</div>
+				</div>
+			</div>
+	</div>
+
+	</div>
+	<!-- //main -->
+  {% endif %}
+</body>
+
+</html>
